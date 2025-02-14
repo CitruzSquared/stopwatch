@@ -53,7 +53,7 @@ setInterval(updateTime, 10);
 function updateTime() {
 	if (started) {
 		currentTime = new Date();
-		elapsedTime = Math.round((currentTime - startTime) / 10) / 100;
+		elapsedTime = Math.round((currentTime - startTime) / 0.01) / 100;
 		timeArray = timeToSixty(elapsedTime);
 		elapsedHours = timeArray[0];
 		elapsedMinutes = timeArray[1];
@@ -89,18 +89,18 @@ function updateMinMax() {
 	}
 }
 
-function timeToText(timeArray) {
-	elapsedText = timeArray[2].toFixed(2) + "s";
+function timeToText(array) {
+	text = array[2].toFixed(2) + "s";
 	if(elapsedMinutes > 0) {
-		elapsedText = timeArray[1].toString() + "m " + elapsedText;
+		text = array[1].toString() + "m " + text;
 	}
 	if(elapsedHours > 0) {
 		if(elapsedMinutes == 0) {
-		elapsedText =timeArray[1].toString() + "m " + elapsedText;
+		text = array[1].toString() + "m " + text;
 		}
-		elapsedText = timeArray[0].toString() + "h " + elapsedText;
+		text = array[0].toString() + "h " + text;
 	}
-	return elapsedText;
+	return text;
 }
 
 
