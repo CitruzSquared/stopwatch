@@ -3,6 +3,7 @@ var waiting = false;
 var stopwatch = document.getElementById("stopwatch");
 var mintime = document.getElementById("mintime");
 var maxtime = document.getElementById("maxtime");
+var average = document.getElementById("average");
 var elapsedTime;
 const times = [];
 
@@ -14,6 +15,7 @@ const Actions = {
 			document.body.style.backgroundColor = "#151515";
 			mintime.style.display = "block";
 			maxtime.style.display = "block";
+			average.style.display = "block";
 			updateMinMax();
 		} 
 		else { //wait
@@ -30,6 +32,7 @@ const Actions = {
 			waiting = false;
 			mintime.style.display = "none";
 			maxtime.style.display = "none";
+			average.style.display = "none";
 		}
 	}
 };
