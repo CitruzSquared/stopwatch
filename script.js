@@ -91,10 +91,10 @@ function updateMinMax() {
 
 function timeToText(array) {
 	text = array[2].toFixed(2) + "s";
-	if(elapsedMinutes > 0) {
+	if(array[1] > 0) {
 		text = array[1].toString() + "m " + text;
 	}
-	if(elapsedHours > 0) {
+	if(array[0] > 0) {
 		if(elapsedMinutes == 0) {
 		text = array[1].toString() + "m " + text;
 		}
