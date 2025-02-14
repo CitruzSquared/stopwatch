@@ -53,7 +53,7 @@ setInterval(updateTime, 10);
 function updateTime() {
 	if (started) {
 		currentTime = new Date();
-		elapsedTime = Math.round((currentTime - startTime) / 0.01) / 100;
+		elapsedTime = Math.round((currentTime - startTime) / 10) / 100;
 		timeArray = timeToSixty(elapsedTime);
 		elapsedHours = timeArray[0];
 		elapsedMinutes = timeArray[1];
