@@ -85,7 +85,6 @@ function updateMinMax() {
 	if (times.length > 0) {
 		minTime = timeToSixty(Math.min(...times));
 		maxTime = timeToSixty(Math.max(...times));
-		console.log(Math.max(times));
 		mintime.innerText = "Minimum Time: " + timeToText(minTime);
 		maxtime.innerText = "Maximum Time: " + timeToText(maxTime);
 	}
