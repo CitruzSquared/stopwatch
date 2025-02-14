@@ -10,7 +10,6 @@ const Actions = {
 	waitOrEnd() {
 		if(started) { //end
 			times.push(elapsedTime);
-			console.log(times);
 			started = false;
 			document.body.style.backgroundColor = "#151515";
 			mintime.style.display = "block";
