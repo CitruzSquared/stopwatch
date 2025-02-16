@@ -5,6 +5,7 @@ var mintime = document.getElementById("mintime");
 var maxtime = document.getElementById("maxtime");
 var average = document.getElementById("average");
 var splitscontainer = document.getElementById("splitscontainer");
+var splitstext = document.getElementById("splitstext");
 var elapsedTime;
 const times = [];
 var splits = [];
@@ -19,6 +20,7 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
+	splitstext.style.display = "block";
             updateMinMax();
         }
         else { //wait
@@ -56,6 +58,7 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
+	splitstext.style.display = "block";
             updateMinMax();
         }
     },
