@@ -4,6 +4,7 @@ var stopwatch = document.getElementById("stopwatch");
 var mintime = document.getElementById("mintime");
 var maxtime = document.getElementById("maxtime");
 var average = document.getElementById("average");
+var splitscontainer = document.getElementById("splitscontainer");
 var elapsedTime;
 const times = [];
 var splits = [];
@@ -18,6 +19,7 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
+	splitscontainer.style.display = "none";
             updateMinMax();
         }
         else { //wait
@@ -35,6 +37,8 @@ const Actions = {
             mintime.style.display = "none";
             maxtime.style.display = "none";
             average.style.display = "none";
+	splitscontainer.style.display = "flex";
+	splitscontainer.style.flexWrap = "wrap";
             splits = [];
         }
     },
@@ -44,7 +48,8 @@ const Actions = {
             splitTime = new Date();
             var splitElapsedTime = Math.round((splitTime - startTime) / 10) / 100;
             splits.push(splitElapsedTime);
-            console.log(splits);
+	splitElapsedColon = timeToColon(timeToSixty(splitElapsedTime));
+            splitscontainer.innerHTML += '<div style="flex-basis: 25%">' + splitElapsedColon + '</div>';
         } else {
             times.push(elapsedTime);
             started = false;
@@ -52,17 +57,23 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
+	splitscontainer.style.display = "none";
             updateMinMax();
         }
     },
     endSplit() {
-        document.body.style.backgroundColor = "#353535";
+        if (started) {
+	document.body.style.backgroundColor = "#353535";
+	}
+	else {
+		document.body.style.backgroundColor = "#151515";
+	}
     }
 };
 
 const keyAction = {
     " ": { keydown: Actions.waitOrEnd, keyup: Actions.start },
-    "Enter": { keydown: Actions.split }
+    "Enter": { keydown: Actions.split, keyup: Actions.endSplit }
 };
 
 const keyHandler = (ev) => {
