@@ -8,7 +8,7 @@ var splitscontainer = document.getElementById("splitscontainer");
 var elapsedTime;
 const times = [];
 var splits = [];
-var numSplits = 5;
+var numSplits = 10;
 
 const Actions = {
     waitOrEnd() {
@@ -19,7 +19,6 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
-	splitscontainer.style.display = "none";
             updateMinMax();
         }
         else { //wait
@@ -57,7 +56,6 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
-	splitscontainer.style.display = "none";
             updateMinMax();
         }
     },
