@@ -20,7 +20,9 @@ const Actions = {
             mintime.style.display = "block";
             maxtime.style.display = "block";
             average.style.display = "block";
-	splitstext.style.display = "block";
+	if (splits.length > 0) {
+		splitstext.style.display = "block";
+	}
             updateMinMax();
         }
         else { //wait
@@ -38,9 +40,15 @@ const Actions = {
             mintime.style.display = "none";
             maxtime.style.display = "none";
             average.style.display = "none";
-	splitscontainer.style.display = "flex";
+	splitstext.style.display = "none";
+	splitscontainer.style.display = "grid";
 	splitscontainer.style.flexWrap = "wrap";
             splits = [];
+	splitscontainer.innerHTML = "";
+            for (let i = 0; i < splits.length; i++) {
+		splitElapsedColon = timeToColon(timeToSixty(splits[i]));
+		splitscontainer.innerHTML += '<div style="padding-left: 1em; padding-right: 1em; flex: 0 0 20%; box-sizing: border-box; ">' + splitElapsedColon + '</div>';
+	}
         }
     },
     split() {
@@ -49,8 +57,11 @@ const Actions = {
             splitTime = new Date();
             var splitElapsedTime = Math.round((splitTime - startTime) / 10) / 100;
             splits.push(splitElapsedTime);
-	splitElapsedColon = timeToColon(timeToSixty(splitElapsedTime));
-            splitscontainer.innerHTML += '<div style="flex-basis: 25%">' + splitElapsedColon + '</div>';
+	splitscontainer.innerHTML = "";
+            for (let i = 0; i < splits.length; i++) {
+		splitElapsedColon = timeToColon(timeToSixty(splits[i]));
+		splitscontainer.innerHTML += '<div style="padding-left: 1em; padding-right: 1em; flex: 0 0 20%; box-sizing: border-box; ">' + splitElapsedColon + '</div>';
+	}
         } else {
             times.push(elapsedTime);
             started = false;
